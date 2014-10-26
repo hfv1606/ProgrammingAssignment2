@@ -4,6 +4,8 @@
 
 ## UNIT TEST
 ##
+## setwd("D:/Dropbox/Docs-Holke/dev.R")
+## source("ProgrammingAssignment2/cachematrix.R")
 ## hilbert <- function(n) { i <- 1:n; 1 / outer(i - 1, i, "+") }
 ## h3 <- hilbert(3)
 ## mcm = makeCacheMatrix(h3)
@@ -57,13 +59,13 @@ makeCacheMatrix <- function(cacheMatrix = matrix()) {
 ## If the inverse has already been calculated (and the matrix has not changed), 
 ## then the cachesolve should retrieve the inverse from the cache.
 
-cacheSolve <- function(x, ...) {
+cacheSolve <- function(cacheMatrix, ...) {
     ## Return a matrix that is the inverse of 'x'
     inverse <- cacheMatrix$getInverse()
     
     if(is.null(inverse)) {
         inverse <- solve(cacheMatrix$get())
-        x$setInverse(inverse)
+        cacheMatrix$setInverse(inverse)
     } else {
         message("using cached data")
     }
